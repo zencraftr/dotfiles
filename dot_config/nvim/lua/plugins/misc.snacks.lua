@@ -100,42 +100,42 @@ return {
 
 		-- Git
 		{
-			"<leader>fgf",
+			"<leader>gf",
 			function()
 				require("snacks").picker.git_files()
 			end,
 			desc = "Find git files",
 		},
 		{
-			"<leader>fgb",
+			"<leader>gb",
 			function()
 				require("snacks").picker.git_branches()
 			end,
 			desc = "Find git branches",
 		},
 		{
-			"<leader>fgl",
+			"<leader>gl",
 			function()
 				require("snacks").picker.git_log()
 			end,
 			desc = "Find git log",
 		},
 		{
-			"<leader>fgL",
+			"<leader>gL",
 			function()
 				require("snacks").picker.git_log_line()
 			end,
 			desc = "Find git log line",
 		},
 		{
-			"<leader>fgs",
+			"<leader>gs",
 			function()
 				require("snacks").picker.git_status()
 			end,
 			desc = "Find git status",
 		},
 		{
-			"<leader>fgS",
+			"<leader>gS",
 			function()
 				require("snacks").picker.git_stash()
 			end,
@@ -144,28 +144,28 @@ return {
 
 		-- Grep
 		{
-			"<leader>fGl",
+			"<leader>fgl",
 			function()
 				require("snacks").picker.lines()
 			end,
 			desc = "Find buffer lines",
 		},
 		{
-			"<leader>fGb",
+			"<leader>fgb",
 			function()
 				require("snacks").picker.grep_buffers()
 			end,
 			desc = "Find grep buffers",
 		},
 		{
-			"<leader>fGg",
+			"<leader>fgg",
 			function()
 				require("snacks").picker.grep()
 			end,
 			desc = "Find grep",
 		},
 		{
-			"<leader>fGw",
+			"<leader>fgw",
 			function()
 				require("snacks").picker.grep_word()
 			end,

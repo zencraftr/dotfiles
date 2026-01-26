@@ -33,47 +33,6 @@ map("x", "<C-c>", '"+y', { desc = "Copy lines" })
 map("n", "<C-c>", '"+yy', { desc = "Copy lines" })
 map("i", "<C-c>", '<esc>"+yygi', { desc = "Copy lines" })
 
--- duplicate
-local function duplicate_line_or_selection()
-	local mode = vim.fn.mode()
-
-	local start_line, end_line
-
-	if mode == "n" then
-		-- Normal mode: duplicate current line
-		start_line = vim.fn.line(".")
-		end_line = start_line
-	elseif mode == "v" then
-		-- Visual mode: duplicate selected lines
-		start_line = vim.fn.line("v")
-		end_line = vim.fn.line(".")
-
-		if start_line > end_line then
-			start_line, end_line = end_line, start_line
-		end
-	else
-		return
-	end
-
-	-- Get the lines
-	local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
-
-	-- Append them directly
-	vim.api.nvim_buf_set_lines(0, end_line, end_line, false, lines)
-
-	if mode == "n" then
-		vim.cmd("normal! j")
-	end
-
-	-- In visual mode, reselect the new block
-	if mode == "v" then
-		vim.cmd("normal! gv")
-	end
-end
-
-map("n", "<leader>dl", duplicate_line_or_selection, { desc = "Duplicate line" })
-map("v", "<leader>dl", duplicate_line_or_selection, { desc = "Duplicate lines" })
-
 -- ---------------------------------- LSP --------------------------------------
 map("n", "<leader>li", "<cmd>checkhealth lsp<CR>", { desc = "LSP info" })
 map("n", "<leader>lh", vim.lsp.buf.hover, { desc = "Hover code" })
@@ -90,3 +49,6 @@ map("n", "<leader>lwr", vim.lsp.buf.remove_workspace_folder, { desc = "Code remo
 map("n", "<leader>lwl", function()
 	vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders()), vim.log.levels.INFO)
 end, { desc = "Code list workspace folders" })
+
+-- Show messages
+map("n", "<leader>m", "<cmd>messages<cr>", { desc = "Messages" })

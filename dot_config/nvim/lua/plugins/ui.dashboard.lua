@@ -34,7 +34,7 @@ return {
 					group = "Number",
 					action = "Lazy",
 					{ enable = true }, -- show how many plugi
-					key = "p",
+					key = "L",
 				},
 				{
 					icon = " ",
@@ -53,6 +53,15 @@ return {
 						Snacks.picker.recent()
 					end,
 					key = "r",
+				},
+				{
+					icon = " ",
+					desc = "Projects",
+					group = "Label",
+					action = function()
+						Snacks.picker.projects()
+					end,
+					key = "p",
 				},
 				{
 					icon = " ",

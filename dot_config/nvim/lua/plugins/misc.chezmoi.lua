@@ -36,7 +36,7 @@ return {
 
 	keys = {
 		{
-			"<leader>cz",
+			"<leader>cm",
 			mode = "n",
 			function()
 				require("modules.chezmoi"):picker()

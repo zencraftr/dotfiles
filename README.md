@@ -1,16 +1,10 @@
 # zencrab's dotfiles
 
-This is my personal dotfiles repository and it's a personal project for my setup that I
+### GitHub
 
-## Set up
+In order to connect to github follow the step listed in the [Github SSH guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+Set up a new SSH key and add it to your github profile, to allow the device to
+your GitHub account.
 
-This section outlines the steps to follow in order to set-up the configuration
-to be fully working.
 
-### Neovim
-
-To setup Neovim there are many steps, but some are required in order to ensure
-it will work great out-of-the-box.
-
-1. *Anthropic API*:
 

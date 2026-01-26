@@ -1,5 +1,6 @@
 return {
 	"zbirenbaum/copilot.lua",
+
 	build = ":Copilot auth",
 
 	event = "InsertEnter",
@@ -31,8 +32,6 @@ return {
 		map("i", "<C-[>", function()
 			require("copilot.suggestion").prev()
 		end, { desc = "Copilot previous suggestion" })
-		map("n", "<leader>cT", function()
-			require("copilot.suggestion").toggle_auto_trigger()
-		end, { desc = "Copilot toggle suggestions" })
+		map("n", "<leader>t", function() end, { desc = "Copilot toggle suggestions" })
 	end,
 }

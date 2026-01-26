@@ -1,20 +1,11 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	name = "treesitter.nvim",
 
 	event = "LazyFile",
 
 	build = ":TSUpdate",
 
-	dependencies = {
-		{
-			"nvim-treesitter/nvim-treesitter-textobjects",
-			name = "treesitter-textobjects.nvim",
-		},
-	},
-
 	opts = {
-		auto_install = true,
 		ensure_installed = {
 			"bash",
 			"fish",
@@ -25,13 +16,27 @@ return {
 			"markdown_inline",
 			"nix",
 			"python",
-			"typst",
 			"yaml",
 		},
-		highlight = { enable = true },
-		indent = { enable = true },
+		auto_install = true,
+
+		highlight = {
+			enable = true,
+			additional_vim_regex_highlighting = false,
+		},
+
+		indent = {
+			enable = true,
+		},
+
+		incremental_selection = {
+			enable = true,
+			keymaps = {
+				init_selection = "<CR>",
+				node_incremental = "<CR>",
+				scope_incremental = "<S-CR>",
+				node_decremental = "<BS>",
+			},
+		},
 	},
-	config = function(_, opts)
-		require("nvim-treesitter.configs").setup(opts)
-	end,
 }
