@@ -6,6 +6,7 @@ return {
 
 	dependencies = {
 		"rafamadriz/friendly-snippets",
+		{ "Kaiser-Yang/blink-cmp-avante", name = "blnk-avante.cmp" },
 	},
 
 	---@module "blink_cmp"
@@ -35,6 +36,7 @@ return {
 				"lsp",
 				"snippets",
 				"path",
+				"avante",
 			},
 			per_filetype = {
 				codecompanion = { "codecompanion" },
@@ -45,6 +47,10 @@ return {
 					name = "LazyDev",
 					module = "lazydev.integrations.blink",
 					score_offset = 100,
+				},
+				avante = {
+					module = "blink-cmp-avante",
+					name = "Avante",
 				},
 			},
 		},

@@ -21,10 +21,17 @@ end
 function M:file()
 	local icon = MiniIcons.get("filetype", vim.bo.filetype)
 
-	-- Hardcoded filetypes
+	-- Hardcoded filetypes (Remember to add the icon to mini.icons)
 	if vim.bo.filetype == "codecompanion" then
 		return icon .. "codecompanion"
+	elseif vim.bo.filetype == "Avante" then
+		return " " .. "Avante"
+	elseif vim.bo.filetype == "AvanteInput" then
+		return " " .. "Avante"
+	elseif vim.bo.filetype == "AvanteSelectedFiles" then
+		return " " .. "Avante"
 	end
+
 	-- Get file icon and name
 	return icon .. " " .. vim.fn.expand("%:t")
 end

@@ -1,7 +1,7 @@
 return {
 	"MeanderingProgrammer/render-markdown.nvim",
 
-	ft = { "markdown", "codecompanion" },
+	ft = { "markdown", "codecompanion", "Avante" },
 
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
@@ -14,5 +14,7 @@ return {
 		completions = {
 			blink = { enabled = true },
 		},
+
+		file_types = { "markdown", "codecompanion", "Avante" },
 	},
 }

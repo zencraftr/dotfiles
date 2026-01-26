@@ -84,6 +84,9 @@ return {
 		opts = {
 			filetype = {
 				codecompanion = { glyph = " ", hl = "MiniIconsRed" },
+				Avante = { glyph = " ", hl = "MiniIconsRed" },
+				AvanteInput = { glyph = " ", hl = "MiniIconsRed" },
+				AvanteSelectedFiles = { glyph = " ", hl = "MiniIconsRed" },
 			},
 		},
 
