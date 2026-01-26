@@ -9,36 +9,54 @@ return {
 	},
 
 	opts = {
-		strategies = {
+		interactions = {
 			chat = {
 				adapter = "copilot",
 				roles = {
 					llm = function(adapter)
-						return "  " .. adapter.formatted_name .. " (" .. adapter.schema.model.default .. ")"
+						return "  " .. adapter.formatted_name
 					end,
 					user = " " .. vim.fn.getenv("USER"),
 				},
 			},
-			cmd = { adapter = "copilot" },
 			inline = { adapter = "copilot" },
+			cmd = { adapter = "copilot" },
 		},
+
+		-- Adapters settings
+		adapters = {
+			http = {
+				anthropic = function()
+					return require("codecompanion.adapters").extend("anthropic", {
+						env = {
+							api_key = vim.fn.getenv("ANTHROPIC_API_KEY"),
+						},
+					})
+				end,
+			},
+			acp = {
+				claude_code = function()
+					return require("codecompanion.adapters").extend("claude_code", {
+						env = {
+							ANTHROPIC_API_KEY = vim.fn.getenv("ANTHROPIC_API_KEY"),
+						},
+						defaults = {
+							model = "haiku",
+						},
+					})
+				end,
+			},
+		},
+
+		-- Display settings
 		display = {
 			chat = {
 				auto_scroll = true,
 				intro_message = "Welcome " .. vim.fn.getenv("USER") .. "! How can I assist you today?",
 			},
 		},
-		adapters = {
-			copilot = function()
-				return require("codecompanion.adapters").extend("copilot", {
-					schema = {
-						model = {
-							default = "claude-3.7-sonnet-thought",
-						},
-					},
-				})
-			end,
-		},
+
+		-- Extension settings
 		extensions = {
 			history = {
 				enabled = true,
@@ -51,12 +69,14 @@ return {
 
 	config = function(_, opts)
 		require("codecompanion").setup(opts)
-		require("modules.fidget-codecompanion"):init()
+		require("modules.codecompanion-fidget"):init()
 	end,
 
 	keys = {
-		{ "<leader>cc", mode = "n", "<Cmd>CodeCompanionChat<Cr>", desc = "AI open chat" },
-		{ "<leader>ct", mode = "n", "<Cmd>CodeCompanionChat Toggle<Cr>", desc = "AI toggle chat" },
-		{ "<leader>ca", mode = "n", "<Cmd>CodeCompanionActions<Cr>", desc = "AI Action" },
+		{ "<leader>Cc", mode = "n", "<Cmd>CodeCompanionChat<Cr>", desc = "AI CodeCompanion open chat" },
+		{ "<leader>Ct", mode = "n", "<Cmd>CodeCompanionChat Toggle<Cr>", desc = "AI CodeCopanion toggle chat" },
+		{ "<leader>Ca", mode = "n", "<Cmd>CodeCompanionActions<Cr>", desc = "AI CodeCompanion actions" },
+
+		{ "<leader>Ch", mode = "n", "<Cmd>CodeCompanionHistory<Cr>", desc = "AI CodeCompanion chats history" },
 	},
 }
