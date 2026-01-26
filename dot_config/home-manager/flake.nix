@@ -1,61 +1,67 @@
 {
 
-    description = "NixOs zencrab's dotfiles flake";
+  description = "NixOs zencraftr's dotfiles flake";
 
-    inputs = {
-        nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
 
-        home-manager = {
-            url = "github:nix-community/home-manager/master";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-
-        battery-notifier = {
-            url = "github:luisnquin/battery-notifier";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    outputs =
-        inputs@{
-            # Nix and Home Manager.
-            self,
-            nixpkgs,
-            home-manager,
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
-            # Custom outputs.
-            spicetify-nix,
-            battery-notifier,
+    battery-notifier = {
+      url = "github:luisnquin/battery-notifier";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 
-            ...
-        }:
-        let
-            lib = nixpkgs.lib;
-            system = "x86_64-linux";
-            pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-            # NixOS configuration.
-            nixosConfigurations.nixos = lib.nixosSystem {
-                inherit system;
-                modules = [
-                    ./configuration.nix
-                ];
-            };
+  outputs =
+    inputs@{
+      # Nix and Home Manager.
+      self,
+      nixpkgs,
+      home-manager,
 
-            # Home Manager configuration.
-            homeConfigurations.zencrab = home-manager.lib.homeManagerConfiguration {
-                inherit pkgs;
-                modules = [
-                    ./home.nix
-                ];
-                extraSpecialArgs = {
-                    inherit spicetify-nix;
-                    inherit battery-notifier;
-                };
-            };
+      # Custom outputs.
+      spicetify-nix,
+      battery-notifier,
+
+      ...
+    }:
+    let
+      lib = nixpkgs.lib;
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      # NixOS configuration.
+      nixosConfigurations.nixos = lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+        ];
+        specialArgs = {
+          inherit spicetify-nix;
+          inherit battery-notifier;
+          inherit home-manager;
         };
+      };
+
+      # Home Manager configuration.
+      homeConfigurations.zencraftr = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home.nix
+        ];
+        extraSpecialArgs = {
+          inherit spicetify-nix;
+          inherit battery-notifier;
+        };
+      };
+    };
 
 }

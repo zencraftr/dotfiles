@@ -59,10 +59,12 @@
   },
   "cpu": {
     "format": "  {usage}%",
-    "tooltip": true
+    "tooltip": true,
+    "on-click": "kitty -e btop"
   },
   "memory": {
-    "format": "  {percentage}%"
+    "format": "  {percentage}%",
+    "on-click": "kitty -e btop"
   },
   "tray": {
     "icon-size": 14,
@@ -78,8 +80,8 @@
   },
   "network": {
     "format-wifi": "{icon}",
-    "format-ethernet": " ",
-    "format-disconnected": " ",
+    "format-ethernet": "󰛳 ",
+    "format-disconnected": "󰲛 ",
     "tooltip-format-disconnected": "No Connection",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)   {ipaddr}/{cidr}",
     "tooltip-format-ethernet": "{ifname}",
@@ -87,7 +89,8 @@
       "<span color=\"#f38ba8\"> </span>",
       "<span color=\"#cdd6f4\"> </span>",
       "<span color=\"#cdd6f4\"> </span>"
-    ]
+    ],
+    "on-click": "kitty -e impala"
   },
   "battery": {
     "interval": 1,

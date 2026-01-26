@@ -1,5 +1,5 @@
 # clear the screen
-alias clears 'printf "\ec\e[3J"'
+alias erase 'printf "\ec\e[3J"'
 
 # power management
 alias off 'systemctl poweroff'
@@ -26,6 +26,4 @@ alias ff 'fastfetch'
 alias fa 'gum spin --spinner minidot --title "Rendering system logo and fetching info..." -- kitten icat -n --place 30x30@0x3 --scale-up --align left ~/.logos/nixos/animation-60fps.gif | fastfetch --logo-width 30 --raw -'
 
 # home-manager
-alias hm 'home-manager'
-alias hm-switch 'home-manager switch --flake ~/.config/home-manager/'
-alias nx-switch 'nixos-rebuild switch --use-remote-sudo --flake ~/.config/home-manager/'
+alias build 'nixos-rebuild switch --sudo --flake ~/.config/home-manager/'

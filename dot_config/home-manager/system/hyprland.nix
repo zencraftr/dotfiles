@@ -5,12 +5,12 @@
     enable = true;
     xwayland.enable = true;
   };
-  #  # Start Hyprland on bootup
+  #  # Start tuigreet and Hyprland on bootup
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland --remember";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland --remember";
         user = "greeter";
       };
     };
@@ -22,7 +22,7 @@
     Type = "idle";
     StandardInput = "tty";
     StandardOutput = "tty";
-    # Without this errors will spam on screen
+    # Without this, errors will spam on screen
     StandardError = "journal";
     # Without these bootlogs will spam on screen
     TTYReset = true;
@@ -32,7 +32,7 @@
 
   environment.systemPackages = with pkgs; [
     # Greetd
-    greetd.tuigreet
+    tuigreet
 
     # Hyprland
     hyprlock
@@ -51,4 +51,5 @@
     # Terminal
     kitty
   ];
+
 }

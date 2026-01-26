@@ -1,12 +1,12 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 
 {
   # Home Manager configuration for the user.
-  home.username = "zencrab";
-  home.homeDirectory = "/home/zencrab";
+  home.username = "zencraftr";
+  home.homeDirectory = "/home/zencraftr";
+
+  programs.home-manager.enable = true;
+  home.stateVersion = "25.11";
 
   imports = [
     # Fonts
@@ -30,21 +30,11 @@
     ./cli-tools/yazi.nix
   ];
 
-  # Local packages
-  nixpkgs.overlays = [
-    (final: prev: {
-      waybar-module-pomodoro =
-        final.callPackage /home/zencrab/Projects/nixpkgs/pkgs/by-name/wa/waybar-module-pomodoro/package.nix
-          { };
-    })
-  ];
-
   # Packages
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    waybar-module-pomodoro
-
+    impala
     # Must-have programs
     zathura
     discord
@@ -76,8 +66,10 @@
     gum
 
     # Development tools
-    qtcreator
     gcc
+    gnumake
+    claude-code
+    claude-code-acp
 
     # Lua
     luajit
@@ -88,9 +80,7 @@
     nix-prefetch-github
 
     # Python
-    poetry
     python3
-    python312Packages.pyside6
 
     # Rust
     rustc
@@ -98,14 +88,7 @@
 
     # Web dev
     nodejs
-    dart-sass
-    heroku
   ];
-
-  # Home Manager release compatability.
-  home.stateVersion = "24.11";
-  # Home Manager auto management.
-  programs.home-manager.enable = true;
 
   # Remove desktop entry for user-level packages.
   xdg.desktopEntries = {
@@ -118,7 +101,7 @@
 
       name = "Obsidian";
       genericName = "Knowledge Base";
-      icon = "/home/zencrab/.config/icons/obsidian.png";
+      # icon = "~/.config/icons/obsidian.png";
 
       exec = "obsidian";
       terminal = false;
@@ -136,9 +119,6 @@
       };
 
     };
-  };
-  # Desktop entry for system-wide packages.
-  xdg.desktopEntries = {
     "kitty" = {
       type = "Application";
 

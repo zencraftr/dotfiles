@@ -1,4 +1,10 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  spicetify-nix,
+  battery-notifier,
+  home-manager,
+  ...
+}:
 
 {
   imports = [
@@ -7,9 +13,13 @@
     # System
     ./system/bluetooth.nix
     ./system/hyprland.nix
+    # ./system/hyprpaper.nix
 
     # Shell
     ./shell.nix
+
+    # Home Manager as a NixOS module
+    home-manager.nixosModules.home-manager
   ];
 
   # Allow experimental features.
@@ -62,19 +72,30 @@
 
     # Developments tools
     git
+
+    # Nix
+    home-manager
   ];
 
   # Enable automatic CPU speed and power optimiser daemon.
   services.auto-cpufreq.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.zencrab = {
+  users.users.zencraftr = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
 
     shell = pkgs.fish;
   };
 
-  # Current system was installed from and is compatible since release 24.11.
-  system.stateVersion = "24.11";
+  # Home Manager
+  home-manager = {
+    users.zencraftr = import ./home.nix;
+    extraSpecialArgs = {
+      inherit spicetify-nix battery-notifier;
+    };
+  };
+
+  # System complatibility verion.
+  system.stateVersion = "25.11";
 }

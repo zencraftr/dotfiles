@@ -1,10 +1,12 @@
 { ... }:
 
 {
-    programs.git = {
-        enable = true;
+  programs.git = {
+    enable = true;
 
-        userName = "Adam Bisinella";
-        userEmail = "adam.bisinella@icloud.com";
+    settings = {
+      user.name = "Adam Bisinella";
+      user.email = "a.bisinella@proton.me";
     };
+  };
 }

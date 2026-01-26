@@ -1,21 +1,21 @@
 {
-    config,
-    pkgs,
-    spicetify-nix,
-    ...
+  config,
+  pkgs,
+  spicetify-nix,
+  ...
 }:
 
 let
-    spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
+  spicePkgs = spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in
 {
-    imports = [
-        spicetify-nix.homeManagerModules.default
-    ];
-    programs.spicetify = {
-        enable = true;
+  imports = [
+    spicetify-nix.homeManagerModules.default
+  ];
+  programs.spicetify = {
+    enable = true;
 
-        theme = spicePkgs.themes.catppuccin;
-        colorScheme = "mocha";
-    };
+    theme = spicePkgs.themes.catppuccin;
+    colorScheme = "mocha";
+  };
 }

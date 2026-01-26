@@ -33,3 +33,10 @@ source ~/.config/fish/gum.fish
 # and not set -q TMUX
 #   exec tmux
 # end
+
+# Auto-start tmux
+if status is-interactive
+    and not set -q TMUX
+    and not set -q SSH_TTY
+    exec tmux
+end
