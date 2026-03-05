@@ -1,8 +1,5 @@
 {
   pkgs,
-  spicetify-nix,
-  battery-notifier,
-  home-manager,
   ...
 }:
 
@@ -10,52 +7,50 @@
   imports = [
     ./hardware-configuration.nix
 
-    # System
-    ./system/bluetooth.nix
-    ./system/hyprland.nix
-    # ./system/hyprpaper.nix
+    # System modules
+    ../../modules/nixos/system/bluetooth.nix
+    ../../modules/nixos/system/hyprland.nix
 
-    # Shell
-    ./shell.nix
+    # Shell configuration
+    ../../modules/nixos/shell.nix
 
-    # Home Manager as a NixOS module
-    home-manager.nixosModules.home-manager
+    ../../modules/nixos/docker.nix
   ];
 
-  # Allow experimental features.
+  # Allow experimental features
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
   programs.command-not-found.enable = false;
 
-  # Use the systemd-boot EFI boot loader.
+  # Boot configuration
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Network configuration
+  # Network configuration (host-specific)
   networking.hostName = "nixos";
   networking.wireless.iwd.enable = true;
   networking.enableIPv6 = false;
 
-  # Set the timezone.
+  # Timezone (host-specific, can be overridden per host)
   time.timeZone = "Europe/London";
 
-  # Enable sound.
+  # Enable sound
   services.pipewire = {
     enable = true;
     pulse.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
+  # Enable touchpad support
   services.libinput.enable = true;
 
-  # Enable not free packages.
+  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile.
+  # System packages
   environment.systemPackages = with pkgs; [
-    # System
+    # System utilities
     brightnessctl
     libnotify
     pulseaudio
@@ -70,32 +65,26 @@
     zip
     unzip
 
-    # Developments tools
+    # Development tools
     git
 
     # Nix
     home-manager
   ];
 
-  # Enable automatic CPU speed and power optimiser daemon.
+  # Enable automatic CPU speed and power optimizer daemon
   services.auto-cpufreq.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # User account (host-specific user configuration)
   users.users.zencraftr = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
-
+    extraGroups = [
+      "wheel"
+      "docker"
+    ];
     shell = pkgs.fish;
   };
 
-  # Home Manager
-  home-manager = {
-    users.zencraftr = import ./home.nix;
-    extraSpecialArgs = {
-      inherit spicetify-nix battery-notifier;
-    };
-  };
-
-  # System complatibility verion.
+  # System compatibility version
   system.stateVersion = "25.11";
 }

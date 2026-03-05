@@ -79,14 +79,14 @@ return {
 	},
 	{
 		"echasnovski/mini.icons",
+		version = "*", -- stable release
 		lazy = true,
 
 		opts = {
 			filetype = {
 				codecompanion = { glyph = " ", hl = "MiniIconsRed" },
-				Avante = { glyph = " ", hl = "MiniIconsRed" },
-				AvanteInput = { glyph = " ", hl = "MiniIconsRed" },
-				AvanteSelectedFiles = { glyph = " ", hl = "MiniIconsRed" },
+				avante = { glyph = " ", hl = "MiniIconsBlue" },
+				claudecode = { glyph = " ", hl = "MiniIconsOrange" },
 			},
 		},
 

@@ -32,6 +32,6 @@ return {
 		map("i", "<C-[>", function()
 			require("copilot.suggestion").prev()
 		end, { desc = "Copilot previous suggestion" })
-		map("n", "<leader>t", function() end, { desc = "Copilot toggle suggestions" })
+		map("n", "<leader>tc", function() end, { desc = "Copilot toggle suggestions" })
 	end,
 }

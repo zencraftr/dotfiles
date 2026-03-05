@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  # Home Manager configuration for the user.
+  # User-specific information
   home.username = "zencraftr";
   home.homeDirectory = "/home/zencraftr";
 
@@ -10,38 +10,32 @@
 
   imports = [
     # Fonts
-    ./fonts.nix
+    ../../modules/home-manager/fonts.nix
 
     # Notifications
-    ./notifications/battery-notifier.nix
-    ./notifications/dunst.nix
+    ../../modules/home-manager/notifications/battery-notifier.nix
+    ../../modules/home-manager/notifications/dunst.nix
 
-    # Softwares
-    ./software/firefox.nix
-    ./software/gimp.nix
-    ./software/mpv.nix
-    ./software/spotify.nix
+    # Software
+    ../../modules/home-manager/software/software.nix
 
     # CLI Tools
-    ./cli-tools/bat.nix
-    ./cli-tools/git.nix
-    ./cli-tools/neovim.nix
-    ./cli-tools/tmux.nix
-    ./cli-tools/yazi.nix
+    ../../modules/home-manager/cli-tools/bat.nix
+    ../../modules/home-manager/cli-tools/git.nix
+    ../../modules/home-manager/cli-tools/neovim.nix
+    ../../modules/home-manager/cli-tools/tmux.nix
+    ../../modules/home-manager/cli-tools/yazi.nix
+
+    # Development
+    ../../modules/home-manager/development/rust.nix
   ];
 
-  # Packages
+  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # User packages
   home.packages = with pkgs; [
     impala
-    # Must-have programs
-    zathura
-    discord
-    obsidian
-    obs-studio
-    blender
-    inkscape
 
     # CLI tools
     asciinema
@@ -54,6 +48,7 @@
     fzf
     gh
     gomi
+    gum
     lazygit
     ripgrep
     starship
@@ -61,9 +56,6 @@
     tmux
     yazi
     zoxide
-
-    # TUI tools
-    gum
 
     # Development tools
     gcc
@@ -90,34 +82,11 @@
     nodejs
   ];
 
-  # Remove desktop entry for user-level packages.
+  # Desktop entries configuration
   xdg.desktopEntries = {
     "btop" = {
       name = "Btop";
       noDisplay = true;
-    };
-    "obsidian" = {
-      type = "Application";
-
-      name = "Obsidian";
-      genericName = "Knowledge Base";
-      # icon = "~/.config/icons/obsidian.png";
-
-      exec = "obsidian";
-      terminal = false;
-
-      categories = [
-        "Office"
-      ];
-
-      mimeType = [
-        "x-scheme-handler/obsidian"
-      ];
-
-      settings = {
-        StartupWMClass = "obsidian";
-      };
-
     };
     "kitty" = {
       type = "Application";
@@ -144,5 +113,4 @@
       noDisplay = true;
     };
   };
-
 }

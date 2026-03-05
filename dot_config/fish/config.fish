@@ -4,6 +4,10 @@ set fish_greeting
 # Set Neovim as default editor
 set -Ux EDITOR nvim
 set -Ux VISUAL nvim
+# set neovim dev
+function dev
+    env NVIM_APPNAME=nvim-dev nvim $argv
+end
 
 # Theme
 set -Ux fish_color_scheme "Catppuccin Mocha"

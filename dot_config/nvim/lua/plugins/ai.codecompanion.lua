@@ -73,10 +73,9 @@ return {
 	end,
 
 	keys = {
-		{ "<leader>Cc", mode = "n", "<Cmd>CodeCompanionChat<Cr>", desc = "AI CodeCompanion open chat" },
-		{ "<leader>Ct", mode = "n", "<Cmd>CodeCompanionChat Toggle<Cr>", desc = "AI CodeCopanion toggle chat" },
-		{ "<leader>Ca", mode = "n", "<Cmd>CodeCompanionActions<Cr>", desc = "AI CodeCompanion actions" },
-
-		{ "<leader>Ch", mode = "n", "<Cmd>CodeCompanionHistory<Cr>", desc = "AI CodeCompanion chats history" },
+		{ "<leader>Cc", mode = "n", "<Cmd>CodeCompanionChat<Cr>", desc = "CodeCompanion open chat" },
+		{ "<leader>Ct", mode = "n", "<Cmd>CodeCompanionChat Toggle<Cr>", desc = "CodeCopanion toggle chat" },
+		{ "<leader>Ca", mode = "n", "<Cmd>CodeCompanionActions<Cr>", desc = "CodeCompanion actions" },
+		{ "<leader>Ch", mode = "n", "<Cmd>CodeCompanionHistory<Cr>", desc = "CodeCompanion chats history" },
 	},
 }

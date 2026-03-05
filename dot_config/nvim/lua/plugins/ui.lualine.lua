@@ -83,7 +83,7 @@ return {
 
 	keys = {
 		{
-			"<leader>llt",
+			"<leader>tl",
 			function()
 				lualine:toggle()
 			end,

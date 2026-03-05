@@ -25,22 +25,22 @@ return {
 		{
 			"<leader>nc",
 			"<Cmd>Fidget clear<Cr>",
-			desc = "Notification clear",
+			desc = "Clear notification",
 		},
 		{
 			"<leader>nC",
 			"<Cmd>Fidget clear_history<Cr>",
-			desc = "Notification clear history",
+			desc = "CLear notification history",
 		},
 		{
 			"<leader>nT",
 			"<Cmd>Fidget suppress<Cr>",
-			desc = "Notification toggle",
+			desc = "Toggle notifications",
 		},
 		{
 			"<leader>nt",
 			"<Cmd>Fidget lsp_suppress<Cr>",
-			desc = "Notification LSP toggle",
+			desc = "Toggle LSP notifications",
 		},
 	},
 }

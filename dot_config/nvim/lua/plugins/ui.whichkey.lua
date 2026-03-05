@@ -27,6 +27,7 @@ return {
 			{ "<leader>lw", group = "Workspace" },
 			{ "<leader>n", group = "Notifications" },
 			{ "<leader>s", group = "Sessions & Splits" },
+			{ "<leader>t", group = "Toggle" },
 		},
 	},
 }

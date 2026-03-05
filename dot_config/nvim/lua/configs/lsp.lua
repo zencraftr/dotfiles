@@ -18,6 +18,7 @@ vim.lsp.enable("lua_ls")
 vim.lsp.enable("nil_ls")
 vim.lsp.enable("pyright")
 vim.lsp.enable("ts_ls")
+vim.lsp.enable("rust_analyzer")
 
 -- WebDev LSPs (vscode-langservers-extracted)
 vim.lsp.enable("html")

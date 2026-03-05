@@ -12,6 +12,9 @@ alias la 'ls --all'
 alias tree 'eza --tree --git-ignore --color=always --icons=auto'
 alias tree4 'tree --level=4'
 
+# zoxide
+alias cd 'z'
+
 # bat
 alias cat 'bat --paging=never'
 
@@ -23,7 +26,7 @@ alias cm 'chezmoi'
 
 # fastfetch
 alias ff 'fastfetch'
-alias fa 'gum spin --spinner minidot --title "Rendering system logo and fetching info..." -- kitten icat -n --place 30x30@0x3 --scale-up --align left ~/.logos/nixos/animation-60fps.gif | fastfetch --logo-width 30 --raw -'
 
-# home-manager
-alias build 'nixos-rebuild switch --sudo --flake ~/.config/home-manager/'
+# NixOs
+alias build 'nixos-rebuild switch --sudo --flake ~/.config/nixos/'
+alias update 'nix flake update --flake ~/.config/nixos/ && nixos-rebuild switch --sudo --flake ~/.config/nixos/'
