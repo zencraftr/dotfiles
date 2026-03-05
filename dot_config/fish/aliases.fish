@@ -30,3 +30,6 @@ alias ff 'fastfetch'
 # NixOs
 alias build 'nixos-rebuild switch --sudo --flake ~/.config/nixos/'
 alias update 'nix flake update --flake ~/.config/nixos/ && nixos-rebuild switch --sudo --flake ~/.config/nixos/'
+
+# lazygit
+alias lg 'lazygit'

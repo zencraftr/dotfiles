@@ -32,12 +32,6 @@ end
 source ~/.config/fish/conda.fish
 source ~/.config/fish/gum.fish
 
-# Tmux
-# if status is-interactive
-# and not set -q TMUX
-#   exec tmux
-# end
-
 # Auto-start tmux
 if status is-interactive
     and not set -q TMUX

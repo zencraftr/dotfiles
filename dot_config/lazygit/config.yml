@@ -22,5 +22,6 @@ gui:
       - "#45475b"
 
   authorColors:
+    'Adam Bisinella': '#eba0ac'
     '*': '#b4befe'
   nerdFontsVersion: "3"
