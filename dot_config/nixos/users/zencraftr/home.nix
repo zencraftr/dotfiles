@@ -19,12 +19,7 @@
     # Software
     ../../modules/home-manager/software/software.nix
 
-    # CLI Tools
-    ../../modules/home-manager/cli-tools/bat.nix
-    ../../modules/home-manager/cli-tools/git.nix
-    ../../modules/home-manager/cli-tools/neovim.nix
-    ../../modules/home-manager/cli-tools/tmux.nix
-    ../../modules/home-manager/cli-tools/yazi.nix
+    ../../modules/home-manager/cli-tools/_main.nix
 
     # Development
     ../../modules/home-manager/development/rust.nix
